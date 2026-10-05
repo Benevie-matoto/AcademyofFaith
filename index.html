@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173d35">
+  <meta name="description" content="Academy of Faith : une école où chaque enfant apprend, grandit et découvre son potentiel.">
+  <title>Academy of Faith | Apprendre, grandir, s’épanouir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #173d35;
+      --forest-deep: #102d28;
+      --leaf: #34715e;
+      --lime: #d5e86c;
+      --coral: #ed7758;
+      --paper: #f7f6ef;
+      --white: #fffefa;
+      --ink: #1b2823;
+      --muted: #66736d;
+      --line: #dce2da;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "DM Sans", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.6 var(--sans); }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--leaf); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { width: 22px; height: 2px; background: var(--coral); content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; }
+    h2 { margin-bottom: 18px; font-size: clamp(36px, 5vw, 57px); }
+    .section-intro { max-width: 610px; color: var(--muted); font-size: 17px; }
+
+    .site-header { position: absolute; z-index: 5; top: 0; left: 0; width: 100%; color: white; }
+    .nav-row { display: flex; min-height: 88px; align-items: center; justify-content: space-between; border-bottom: 1px solid rgb(255 255 255 / 24%); }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--serif); font-size: 19px; font-weight: 600; line-height: 1.05; }
+    .brand small { display: block; margin-top: 5px; font: 600 9px/1 var(--sans); letter-spacing: .19em; text-transform: uppercase; }
+    .brand-mark { display: grid; width: 43px; height: 43px; place-items: center; border: 1px solid rgb(255 255 255 / 55%); border-radius: 50%; color: var(--lime); }
+    .brand-mark svg { width: 25px; height: 25px; }
+    .nav-links { display: flex; align-items: center; gap: clamp(14px, 2vw, 27px); font-size: 12px; font-weight: 600; }
+    .nav-links a { padding-block: 10px; color: rgb(255 255 255 / 90%); transition: color .2s; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--lime); }
+    .nav-links .nav-contact { padding: 11px 16px; border: 1px solid rgb(255 255 255 / 60%); border-radius: 2px; }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid rgb(255 255 255 / 55%); border-radius: 2px; background: transparent; color: white; cursor: pointer; }
+    .menu-toggle svg { width: 21px; height: 21px; }
+
+    .hero { position: relative; display: flex; min-height: 710px; align-items: center; overflow: hidden; background: var(--forest-deep); color: white; }
+    .hero-photo { position: absolute; inset: 0; height: 100%; object-position: center 43%; }
+    .hero::after { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(12 35 30 / 84%) 0%, rgb(12 35 30 / 66%) 39%, rgb(12 35 30 / 15%) 100%); content: ""; }
+    .hero-content { position: relative; z-index: 1; width: min(1160px, calc(100% - 48px)); margin: 92px auto 0; padding-block: 82px 85px; }
+    .hero .eyebrow { color: var(--lime); }
+    .hero h1 { max-width: 710px; margin: 26px 0 20px; font-size: clamp(54px, 8vw, 94px); letter-spacing: -.025em; }
+    .hero h1 em { color: var(--lime); font-weight: 500; }
+    .hero-copy { max-width: 510px; margin-bottom: 32px; color: rgb(255 255 255 / 85%); font-size: 18px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px; padding: 12px 19px; border: 1px solid transparent; border-radius: 2px; font-size: 13px; font-weight: 700; transition: background .2s, color .2s, border-color .2s, transform .2s; cursor: pointer; }
+    .button:hover { transform: translateY(-2px); }
+    .button svg { width: 17px; height: 17px; }
+    .button-primary { background: var(--lime); color: var(--forest-deep); }
+    .button-primary:hover { background: #e2f398; }
+    .button-ghost { border-color: rgb(255 255 255 / 60%); color: white; }
+    .button-ghost:hover { border-color: white; background: rgb(255 255 255 / 12%); }
+    .hero-note { position: absolute; right: 0; bottom: 52px; display: flex; align-items: center; gap: 12px; color: white; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+    .hero-note::before { width: 38px; height: 1px; background: var(--lime); content: ""; }
+
+    .welcome { padding: 94px 0 100px; background: var(--white); }
+    .welcome-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 9%; }
+    .welcome-photo-wrap { position: relative; padding: 0 24px 24px 0; }
+    .welcome-photo { aspect-ratio: 1.15; }
+    .welcome-photo-wrap::after { position: absolute; z-index: 0; right: 0; bottom: 0; width: 73%; height: 62%; border: 2px solid var(--lime); content: ""; }
+    .welcome-photo { position: relative; z-index: 1; }
+    .welcome-copy { position: relative; z-index: 1; }
+    .welcome-copy h2 { margin-top: 20px; }
+    .welcome-copy p { color: var(--muted); }
+    .welcome-copy .button { margin-top: 9px; }
+    .button-dark { background: var(--forest); color: white; }
+    .button-dark:hover { background: var(--leaf); }
+    .values-strip { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 76px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .value { display: flex; align-items: center; gap: 15px; padding: 23px 18px; }
+    .value + .value { border-left: 1px solid var(--line); }
+    .value-number { color: var(--coral); font-family: var(--serif); font-size: 30px; }
+    .value strong { display: block; font-size: 14px; }
+    .value span:last-child { display: block; color: var(--muted); font-size: 12px; }
+
+    .programs { padding: 95px 0 104px; background: #eaf0e9; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 38px; }
+    .section-heading h2 { max-width: 550px; margin: 15px 0 0; }
+    .section-heading .section-intro { max-width: 385px; margin-bottom: 4px; font-size: 15px; }
+    .program-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #cbd8ce; }
+    .program { position: relative; min-height: 254px; padding: 30px 30px 29px 0; }
+    .program + .program { padding-left: 30px; border-left: 1px solid #cbd8ce; }
+    .program-tag { color: var(--leaf); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .program h3 { margin: 19px 0 10px; font-size: 28px; }
+    .program p { max-width: 310px; margin-bottom: 20px; color: var(--muted); font-size: 14px; }
+    .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--forest); font-size: 12px; font-weight: 700; }
+    .text-link svg { width: 15px; height: 15px; transition: transform .2s; }
+    .text-link:hover svg { transform: translateX(4px); }
+
+    .classes { padding: 99px 0; background: var(--forest); color: white; }
+    .classes-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 10%; }
+    .classes .eyebrow { color: var(--lime); }
+    .classes h2 { margin-top: 17px; }
+    .classes-copy { max-width: 395px; color: rgb(255 255 255 / 72%); }
+    .class-list { border-top: 1px solid rgb(255 255 255 / 25%); }
+    .class-row { display: grid; grid-template-columns: 56px 1fr auto; align-items: center; gap: 15px; padding: 20px 0; border-bottom: 1px solid rgb(255 255 255 / 25%); }
+    .class-index { color: var(--lime); font-family: var(--serif); font-size: 21px; }
+    .class-row strong { font-family: var(--serif); font-size: 20px; font-weight: 500; }
+    .class-row span:last-child { color: rgb(255 255 255 / 66%); font-size: 12px; }
+
+    .gallery { padding: 94px 0 100px; background: var(--white); }
+    .gallery .section-heading { margin-bottom: 30px; }
+    .gallery-grid { display: grid; grid-template-columns: 1.25fr .85fr .85fr; grid-template-rows: 208px 208px; gap: 13px; }
+    .gallery-item { position: relative; overflow: hidden; background: #d5ded6; }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item img { height: 100%; transition: transform .5s cubic-bezier(.2,.75,.3,1); }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-label { position: absolute; right: 12px; bottom: 12px; padding: 7px 10px; background: var(--white); color: var(--forest); font-size: 10px; font-weight: 700; }
+
+    .news { padding: 92px 0 99px; background: #f0ede2; }
+    .news .section-heading { margin-bottom: 33px; }
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .news-item { min-height: 220px; padding: 24px 23px; border-top: 3px solid var(--leaf); background: var(--white); }
+    .news-item:nth-child(3n + 2) { border-color: var(--coral); }
+    .news-item:nth-child(3n + 3) { border-color: #b6c449; }
+    .news-date { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .news-item h3 { margin: 15px 0 10px; font-size: 24px; }
+    .news-item p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
+    .news-empty { padding: 30px; border: 1px dashed #aeb7ad; color: var(--muted); text-align: center; }
+
+    .contact { padding: 94px 0 96px; background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; align-items: stretch; gap: 7%; }
+    .contact-copy h2 { margin-top: 17px; }
+    .contact-copy > p { max-width: 390px; color: var(--muted); }
+    .contact-details { display: grid; gap: 18px; margin: 31px 0; }
+    .contact-line { display: grid; grid-template-columns: 25px 1fr; gap: 12px; align-items: start; }
+    .contact-line svg { width: 20px; height: 20px; color: var(--coral); }
+    .contact-line strong { display: block; font-size: 13px; }
+    .contact-line span { color: var(--muted); font-size: 13px; }
+    .map-wrap { display: flex; min-height: 390px; background-color: #e6ece5; background-image: linear-gradient(28deg, transparent 47%, #d4ded5 48%, #d4ded5 50%, transparent 51%), linear-gradient(145deg, transparent 54%, #d4ded5 55%, #d4ded5 57%, transparent 58%); }
+    .map-card { display: flex; width: 100%; flex-direction: column; align-items: flex-start; justify-content: flex-end; padding: 30px; background: linear-gradient(0deg, rgb(247 246 239 / 95%), rgb(247 246 239 / 85%) 46%, transparent 100%); }
+    .map-pin { display: grid; width: 44px; height: 44px; margin-bottom: 14px; place-items: center; border-radius: 50%; background: var(--coral); color: white; }
+    .map-pin svg { width: 23px; height: 23px; }
+    .map-card strong { font-family: var(--serif); font-size: 25px; }
+    .map-card p { max-width: 330px; margin: 5px 0 17px; color: var(--muted); font-size: 13px; }
+
+    .site-footer { padding: 27px 0; background: var(--forest-deep); color: white; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-row .brand { font-size: 16px; }
+    .footer-row .brand-mark { width: 36px; height: 36px; }
+    .footer-copy { color: rgb(255 255 255 / 65%); font-size: 11px; }
+    .footer-links { display: flex; gap: 18px; color: rgb(255 255 255 / 80%); font-size: 11px; }
+    .whatsapp-float { position: fixed; z-index: 4; right: 22px; bottom: 22px; display: grid; width: 54px; height: 54px; place-items: center; border: 2px solid white; border-radius: 50%; background: #1c9d62; color: white; box-shadow: 0 5px 20px rgb(0 0 0 / 18%); transition: transform .2s; }
+    .whatsapp-float:hover { transform: translateY(-3px); }
+    .whatsapp-float svg { width: 25px; height: 25px; }
+
+    dialog { width: min(480px, calc(100% - 32px)); padding: 0; border: 0; background: var(--white); color: var(--ink); box-shadow: 0 18px 70px rgb(0 0 0 / 25%); }
+    dialog::backdrop { background: rgb(10 30 25 / 65%); }
+    .dialog-head { display: flex; align-items: start; justify-content: space-between; padding: 23px 24px 0; }
+    .dialog-head h2 { margin: 0; font-size: 30px; }
+    .dialog-close { display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; }
+    .dialog-close svg { width: 18px; height: 18px; }
+    .announcement-form { display: grid; gap: 15px; padding: 20px 24px 24px; }
+    .announcement-form label { display: grid; gap: 6px; font-size: 12px; font-weight: 700; }
+    .announcement-form input, .announcement-form textarea { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 0; background: white; color: var(--ink); }
+    .announcement-form textarea { min-height: 105px; resize: vertical; }
+    .announcement-form .button { justify-self: start; }
+    .dialog-hint { margin: -4px 0 0; color: var(--muted); font-size: 11px; }
+    .remove-announcement { float: right; padding: 0; border: 0; background: none; color: var(--leaf); font-size: 11px; font-weight: 700; cursor: pointer; }
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 12px; font-size: 11px; }
+      .brand { font-size: 16px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .welcome-grid { gap: 6%; }
+      .contact-grid { gap: 5%; }
+    }
+    @media (max-width: 700px) {
+      html { scroll-padding-top: 68px; }
+      .wrap, .hero-content { width: min(100% - 36px, 520px); }
+      .nav-row { min-height: 72px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-links { position: absolute; top: 71px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 18px 17px; background: var(--forest-deep); font-size: 14px; }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links a { padding: 11px 4px; border-bottom: 1px solid rgb(255 255 255 / 12%); }
+      .nav-links .nav-contact { margin-top: 9px; padding: 11px 13px; border: 1px solid rgb(255 255 255 / 45%); text-align: center; }
+      .hero { min-height: 680px; min-height: min(760px, 100svh); }
+      .hero-photo { object-position: 60% center; }
+      .hero::after { background: linear-gradient(90deg, rgb(12 35 30 / 83%), rgb(12 35 30 / 40%)), linear-gradient(0deg, rgb(12 35 30 / 40%), transparent 65%); }
+      .hero-content { margin-top: 72px; padding-block: 70px 76px; }
+      .hero h1 { max-width: 490px; margin-top: 22px; font-size: clamp(51px, 13vw, 72px); }
+      .hero-copy { font-size: 16px; }
+      .hero-note { right: 0; bottom: 25px; font-size: 9px; }
+      .welcome, .programs, .gallery, .news, .contact { padding-block: 70px; }
+      .welcome-grid, .classes-grid, .contact-grid { grid-template-columns: 1fr; gap: 34px; }
+      .welcome-photo-wrap { max-width: 500px; }
+      .welcome-copy h2 { font-size: 43px; }
+      .values-strip { margin-top: 50px; }
+      .value { display: block; padding: 16px 9px; }
+      .value-number { display: block; font-size: 25px; }
+      .value strong { font-size: 12px; }
+      .value span:last-child { font-size: 10px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 11px; }
+      .section-heading h2 { font-size: 43px; }
+      .section-heading .section-intro { margin: 0; }
+      .program-grid { grid-template-columns: 1fr; }
+      .program { min-height: auto; padding: 24px 0; }
+      .program + .program { padding-left: 0; border-left: 0; border-top: 1px solid #cbd8ce; }
+      .program h3 { margin-top: 12px; }
+      .classes-grid { gap: 25px; }
+      .class-row { grid-template-columns: 35px 1fr auto; gap: 10px; }
+      .class-row strong { font-size: 18px; }
+      .class-row span:last-child { font-size: 10px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 155px 155px; gap: 9px; }
+      .gallery-item:first-child { grid-column: span 2; grid-row: auto; }
+      .news-grid { grid-template-columns: 1fr; gap: 12px; }
+      .news-item { min-height: auto; padding: 20px; }
+      .map-wrap { min-height: 320px; }
+      .footer-row { align-items: start; flex-direction: column; }
+      .footer-links { flex-wrap: wrap; }
+      .whatsapp-float { right: 15px; bottom: 15px; width: 50px; height: 50px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav-row">
+      <a class="brand" href="#accueil" aria-label="Academy of Faith, accueil">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 8.5c4.2-.8 7.4.1 11 3.1 3.6-3 6.8-3.9 11-3.1v15c-4.2-.8-7.4.1-11 3.1-3.6-3-6.8-3.9-11-3.1v-15Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M16 11.6v15M9 13l4 1M23 13l-4 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <span>Academy of Faith<small>Grandir avec confiance</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <nav class="nav-links" id="main-nav" aria-label="Navigation principale">
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#programmes">Programmes</a>
+        <a href="#classes">Classes</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#actualites">Actualités</a>
+        <a class="nav-contact" href="#contact">Nous contacter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil" aria-labelledby="hero-title">
+      <img class="hero-photo" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=85" alt="Des élèves participent à une activité en classe" fetchpriority="high">
+      <div class="hero-content">
+        <span class="eyebrow">Bienvenue à Academy of Faith</span>
+        <h1 id="hero-title">Apprendre.<br>Grandir.<br><em>S’épanouir.</em></h1>
+        <p class="hero-copy">Un lieu où chaque enfant est accompagné, encouragé et préparé à construire son avenir.</p>
+        <div class="actions">
+          <a class="button button-primary" href="#programmes">Découvrir nos programmes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a class="button button-ghost" href="#contact">Parlons de votre enfant</a>
+        </div>
+        <span class="hero-note">Une école, mille possibilités</span>
+      </div>
+    </section>
+
+    <section class="welcome" id="apropos">
+      <div class="wrap">
+        <div class="welcome-grid">
+          <div class="welcome-photo-wrap"><img class="welcome-photo" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1000&q=80" alt="Une élève concentrée sur son travail en classe" loading="lazy"></div>
+          <div class="welcome-copy">
+            <span class="eyebrow">À propos de l’école</span>
+            <h2>Une attention vraie, pour chaque élève.</h2>
+            <p>À Academy of Faith, nous croyons que l’éducation va bien au-delà des leçons. Nous créons un cadre bienveillant où curiosité, confiance et sens des responsabilités aident chaque enfant à trouver sa voie.</p>
+            <p>Notre équipe accompagne les élèves à chaque étape, en lien étroit avec les familles et la communauté.</p>
+            <a class="button button-dark" href="#contact">Rencontrer notre équipe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+        <div class="values-strip" aria-label="Nos engagements">
+          <div class="value"><span class="value-number">01</span><div><strong>Apprendre avec curiosité</strong><span>Des bases solides et durables</span></div></div>
+          <div class="value"><span class="value-number">02</span><div><strong>Grandir ensemble</strong><span>Une communauté qui soutient</span></div></div>
+          <div class="value"><span class="value-number">03</span><div><strong>Oser chaque jour</strong><span>La confiance pour aller plus loin</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="programs" id="programmes">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><span class="eyebrow">Nos programmes</span><h2>Des apprentissages<br>qui ouvrent des portes.</h2></div>
+          <p class="section-intro">Un parcours équilibré qui nourrit les connaissances, la créativité et les compétences utiles au quotidien.</p>
+        </div>
+        <div class="program-grid">
+          <article class="program"><span class="program-tag">Les premières découvertes</span><h3>Éveil & maternelle</h3><p>Les premiers pas vers l’autonomie, le langage et le plaisir de découvrir le monde.</p><a class="text-link" href="#contact">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></article>
+          <article class="program"><span class="program-tag">Les fondamentaux</span><h3>Enseignement primaire</h3><p>Des bases solides en lecture, mathématiques et expression, dans un cadre stimulant.</p><a class="text-link" href="#contact">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></article>
+          <article class="program"><span class="program-tag">Vers l’avenir</span><h3>Parcours secondaire</h3><p>Des élèves responsables et prêts à poursuivre leurs ambitions avec confiance.</p><a class="text-link" href="#contact">En savoir plus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="classes" id="classes">
+      <div class="wrap classes-grid">
+        <div><span class="eyebrow">Nos classes & sections</span><h2>À chaque âge,<br>son prochain pas.</h2><p class="classes-copy">Nous accueillons les élèves dans des classes adaptées à leur rythme et à leur étape de développement. Contactez-nous pour connaître les niveaux ouverts cette année.</p><a class="button button-primary" href="#contact">Demander une information</a></div>
+        <div class="class-list">
+          <div class="class-row"><span class="class-index">01</span><strong>Petite & grande section</strong><span>Éveil</span></div>
+          <div class="class-row"><span class="class-index">02</span><strong>Classes primaires</strong><span>Fondamentaux</span></div>
+          <div class="class-row"><span class="class-index">03</span><strong>Classes secondaires</strong><span>Approfondissement</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="galerie">
+      <div class="wrap">
+        <div class="section-heading"><div><span class="eyebrow">La vie à l’école</span><h2>Apprendre, c’est aussi partager.</h2></div><p class="section-intro">Quelques instants de classe, de création et de vie ensemble.</p></div>
+        <div class="gallery-grid">
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=80" alt="Une salle de classe lumineuse" loading="lazy"><figcaption class="gallery-label">Au cœur de la classe</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=700&q=80" alt="Des enfants réunis autour d’une activité" loading="lazy"><figcaption class="gallery-label">Ensemble</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=700&q=80" alt="Un moment de lecture partagé" loading="lazy"><figcaption class="gallery-label">Le goût de lire</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=700&q=80" alt="Une activité en plein air" loading="lazy"><figcaption class="gallery-label">Bouger & découvrir</figcaption></figure>
+          <figure class="gallery-item"><img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=700&q=80" alt="Une élève qui écrit dans son cahier" loading="lazy"><figcaption class="gallery-label">Chaque progrès compte</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="news" id="actualites">
+      <div class="wrap">
+        <div class="section-heading"><div><span class="eyebrow">Actualités & annonces</span><h2>Les nouvelles de l’école.</h2></div><button class="button button-dark" id="open-announcement" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Ajouter une annonce</button></div>
+        <div class="news-grid" id="news-grid" aria-live="polite">
+          <article class="news-item"><span class="news-date">Vie de l’école</span><h3>Une année pleine de découvertes</h3><p>Nous nous réjouissons d’accueillir les élèves et les familles pour une nouvelle année d’apprentissage et de partage.</p></article>
+          <article class="news-item"><span class="news-date">Rencontre</span><h3>Bienvenue aux nouvelles familles</h3><p>Notre équipe est disponible pour répondre à vos questions sur l’école, les classes et les inscriptions.</p></article>
+          <article class="news-item"><span class="news-date">Activités</span><h3>Apprendre aussi en explorant</h3><p>Projets, jeux et activités créatives font partie des moments qui rythment la vie de notre communauté.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div class="contact-copy"><span class="eyebrow">Contact</span><h2>Faisons connaissance.</h2><p>Vous souhaitez en savoir plus sur les inscriptions ou visiter l’école ? Écrivez-nous, nous serons heureux d’échanger avec vous.</p>
+          <div class="contact-details">
+            <div class="contact-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><div><strong>Notre école</strong><span>5e Rue, Limete Industriel<br>Kinshasa, République démocratique du Congo</span></div></div>
+            <div class="contact-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20l1.2-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 8.5c.5 3 2.3 4.8 5.3 5.5l1-1.2 2 .8c-.1 1.4-1.1 2.3-2.6 2.3-3.6-.5-6.9-3.8-7.5-7.3 0-1.4.9-2.5 2.3-2.6l.8 2-1.3.5Z"/></svg><div><strong>Échangeons sur WhatsApp</strong><span><a href="tel:+243812355409">+243 812 355 409</a></span></div></div>
+          </div>
+          <a class="button button-dark whatsapp-link" href="https://wa.me/243812355409?text=Bonjour%20Academy%20of%20Faith%2C%20je%20souhaite%20obtenir%20des%20informations." target="_blank" rel="noopener noreferrer">Nous écrire sur WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        </div>
+        <div class="map-wrap"><div class="map-card"><span class="map-pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><strong>Academy of Faith</strong><p>5e Rue, Limete Industriel, Kinshasa</p><a class="button button-dark" href="https://www.google.com/maps/search/?api=1&amp;query=5e%20Rue%2C%20Limete%20Industriel%2C%20Kinshasa%2C%20RDC" target="_blank" rel="noopener noreferrer">Voir sur Google Maps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <a class="brand" href="#accueil"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M5 8.5c4.2-.8 7.4.1 11 3.1 3.6-3 6.8-3.9 11-3.1v15c-4.2-.8-7.4.1-11 3.1-3.6-3-6.8-3.9-11-3.1v-15Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M16 11.6v15M9 13l4 1M23 13l-4 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span>Academy of Faith<small>Grandir avec confiance</small></span></a>
+      <span class="footer-copy">© <span id="year"></span> Academy of Faith</span>
+      <div class="footer-links"><a href="#apropos">L’école</a><a href="#actualites">Actualités</a><a href="#contact">Contact</a></div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float whatsapp-link" href="https://wa.me/243812355409?text=Bonjour%20Academy%20of%20Faith%2C%20je%20souhaite%20obtenir%20des%20informations." target="_blank" rel="noopener noreferrer" aria-label="Contacter Academy of Faith sur WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20l1.2-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 8.5c.5 3 2.3 4.8 5.3 5.5l1-1.2 2 .8c-.1 1.4-1.1 2.3-2.6 2.3-3.6-.5-6.9-3.8-7.5-7.3 0-1.4.9-2.5 2.3-2.6l.8 2-1.3.5Z"/></svg></a>
+
+  <dialog id="announcement-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><h2 id="dialog-title">Nouvelle annonce</h2><button class="dialog-close" id="close-announcement" type="button" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <form class="announcement-form" id="announcement-form">
+      <label for="announcement-title">Titre<input id="announcement-title" name="title" maxlength="75" required placeholder="Ex. Réunion des parents"></label>
+      <label for="announcement-body">Message<textarea id="announcement-body" name="body" maxlength="260" required placeholder="Écrivez votre annonce en quelques phrases."></textarea></label>
+      <p class="dialog-hint">L’annonce s’affichera dans ce navigateur.</p>
+      <button class="button button-dark" type="submit">Publier l’annonce</button>
+    </form>
+  </dialog>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('#main-nav');
+    const announcementDialog = document.querySelector('#announcement-dialog');
+    const announcementForm = document.querySelector('#announcement-form');
+    const newsGrid = document.querySelector('#news-grid');
+    const announcementsKey = 'academy-of-faith-announcements';
+
+    document.querySelector('#year').textContent = new Date().getFullYear();
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Ouvrir le menu' : 'Fermer le menu');
+      mainNav.classList.toggle('is-open', !isOpen);
+    });
+
+    mainNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      mainNav.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Ouvrir le menu');
+    }));
+
+    function getAnnouncements() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(announcementsKey) || '[]');
+        return Array.isArray(stored) ? stored : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function renderAnnouncements() {
+      const announcements = getAnnouncements();
+      newsGrid.querySelectorAll('[data-announcement]').forEach((item) => item.remove());
+      announcements.forEach((announcement, index) => {
+        const article = document.createElement('article');
+        article.className = 'news-item';
+        article.dataset.announcement = 'true';
+        const date = document.createElement('span');
+        date.className = 'news-date';
+        date.textContent = announcement.date;
+        const title = document.createElement('h3');
+        title.textContent = announcement.title;
+        const body = document.createElement('p');
+        body.textContent = announcement.body;
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'remove-announcement';
+        remove.textContent = 'Supprimer';
+        remove.setAttribute('aria-label', `Supprimer l’annonce : ${announcement.title}`);
+        remove.addEventListener('click', () => {
+          const updated = getAnnouncements();
+          updated.splice(index, 1);
+          localStorage.setItem(announcementsKey, JSON.stringify(updated));
+          renderAnnouncements();
+        });
+        article.append(date, remove, title, body);
+        newsGrid.prepend(article);
+      });
+    }
+
+    document.querySelector('#open-announcement').addEventListener('click', () => announcementDialog.showModal());
+    document.querySelector('#close-announcement').addEventListener('click', () => announcementDialog.close());
+    announcementDialog.addEventListener('click', (event) => {
+      if (event.target === announcementDialog) announcementDialog.close();
+    });
+    announcementForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(announcementForm);
+      const date = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+      const announcements = getAnnouncements();
+      announcements.unshift({ title: formData.get('title').trim(), body: formData.get('body').trim(), date });
+      localStorage.setItem(announcementsKey, JSON.stringify(announcements.slice(0, 12)));
+      renderAnnouncements();
+      announcementForm.reset();
+      announcementDialog.close();
+    });
+
+    renderAnnouncements();
+  </script>
+</body>
+</html>
